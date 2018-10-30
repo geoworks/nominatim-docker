@@ -81,7 +81,7 @@ RUN chmod a+x ${USERHOME}
 
 # Install Nominatim
 USER nominatim
-ARG REPLICATION_URL=https://planet.osm.org/replication/hour/
+ARG REPLICATION_URL=https://fs.geoworks.org/volga-fed-district-latest.osm.pbf
 WORKDIR /srv/nominatim
 RUN git clone --recursive git://github.com/openstreetmap/Nominatim.git
 RUN echo $'<?php\n\
@@ -106,7 +106,7 @@ RUN mkdir ${USERHOME}/Nominatim/build && \
 
 # Download data for initial import
 USER nominatim
-ARG PBF_URL=https://planet.osm.org/pbf/planet-latest.osm.pbf
+ARG PBF_URL=https://fs.geoworks.org/volga-fed-district-latest.osm.pbf
 RUN curl -L ${PBF_URL} --create-dirs -o /srv/nominatim/src/data.osm.pbf
 
 # Filter administrative boundaries
